@@ -1,5 +1,7 @@
 import BoxCode from "@/components/BoxCode";
 import BreadCrump from "@/components/BreadCrump";
+import Layout from "@/components/Layout";
+import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
 import { useRouter } from "next/router";
@@ -9,7 +11,7 @@ const DetailsPage = () => {
   const tabsData = [
     {
       label: "Code",
-      content: <BoxCode syntax="jsx"  >{codeString}</BoxCode>,
+      content: <BoxCode syntax="jsx">{codeString}</BoxCode>,
     },
     { label: "Components", content: <FetchByUsEffect /> },
   ];
@@ -63,10 +65,5 @@ const codeString = `const FetchByUsEffect = () => {
   };`;
 
 DetailsPage.getLayout = function getLayout(page: any) {
-  return (
-    <div>
-      <BreadCrump />
-      <main className="container mx-auto my-10">{page}</main>
-    </div>
-  );
+  return <UseEffectLayout>{page}</UseEffectLayout>;
 };

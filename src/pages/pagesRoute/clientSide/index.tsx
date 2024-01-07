@@ -1,5 +1,7 @@
 import BoxTranslate from "@/components/BoxTranslate";
 import BreadCrump from "@/components/BreadCrump";
+import Layout from "@/components/Layout";
+import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import Slider from "@/components/Slider";
 import Link from "next/link";
 import React from "react";
@@ -19,7 +21,9 @@ const ClientSide = () => {
             because the data fetching is done at the time of the component or pages mount, and the data is not cached. Client-side data fetching with useEffect
           </BoxTranslate>
         </div>
-        <Slider list={[<img src="/img/client-side-rendering.png" alt="csr" key={"client-side-rendering"} />, <img src="/img/csr.jpeg" alt="csr" key={"csr"} />]} />
+        <Slider
+          list={[<img src="/img/client-side-rendering.png" alt="csr" key={"client-side-rendering"} />, <img src="/img/csr.jpeg" alt="csr" key={"csr"} />]}
+        />
       </main>
     </div>
   );
@@ -28,17 +32,5 @@ const ClientSide = () => {
 export default ClientSide;
 
 ClientSide.getLayout = function getLayout(page: any) {
-  return (
-    <div>
-      <header className="border-b-2 p-4 flex gap-4">
-        <Link href="/pagesRoute/clientSide/useEffect">UseEffect</Link>
-        {` | `}
-        <Link href="/pagesRoute/clientSide/swr">Swr</Link>
-        {` | `}
-        <Link href="/pagesRoute/clientSide/reactQuery">React Query</Link>
-      </header>
-      <BreadCrump />
-      <main className="container mx-auto my-20">{page}</main>
-    </div>
-  );
+  return <UseEffectLayout>{page}</UseEffectLayout>;
 };

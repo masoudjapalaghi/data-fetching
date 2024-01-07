@@ -1,17 +1,12 @@
-import BreadCrump from "@/components/BreadCrump";
 import ComingSoon from "@/components/ComingSoon";
+import UseEffectLayout from "@/components/Layout/useEffectLayout";
 
 const ReactQueryComponent = () => {
-  return <ComingSoon/>;
+  return <ComingSoon />;
 };
 
 export default ReactQueryComponent;
 
 ReactQueryComponent.getLayout = function getLayout(page: any) {
-  return (
-    <div>
-      <BreadCrump />
-      <main className="container mx-auto my-10">{page}</main>
-    </div>
-  );
+  return <UseEffectLayout>{page}</UseEffectLayout>;
 };

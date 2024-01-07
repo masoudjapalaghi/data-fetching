@@ -1,5 +1,7 @@
 import BoxCode from "@/components/BoxCode";
 import BreadCrump from "@/components/BreadCrump";
+import Layout from "@/components/Layout";
+import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
 import Link from "next/link";
@@ -11,7 +13,7 @@ const SwrComponent = () => {
     { label: "Components", content: <FetchBySwr /> },
     {
       label: "Code",
-      content: <BoxCode syntax="jsx"  >{codeString}</BoxCode>,
+      content: <BoxCode syntax="jsx">{codeString}</BoxCode>,
     },
   ];
 
@@ -27,10 +29,7 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 
 function FetchBySwr() {
   const { pathname } = useRouter();
-  const { data, error } = useSWR<{ data: ProductCardType[] }>(
-    "/api/list",
-    fetcher
-  );
+  const { data, error } = useSWR<{ data: ProductCardType[] }>("/api/list", fetcher);
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
@@ -75,10 +74,5 @@ function FetchBySwr() {
 }`;
 
 SwrComponent.getLayout = function getLayout(page: any) {
-  return (
-    <div>
-      <BreadCrump />
-      <main className="container mx-auto my-10">{page}</main>
-    </div>
-  );
+  return <UseEffectLayout>{page}</UseEffectLayout>;
 };

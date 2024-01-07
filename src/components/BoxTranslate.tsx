@@ -24,30 +24,30 @@ const BoxTranslate = ({ children, sourceLanguage, targetLanguage }: { children: 
         fallback_providers: "",
       },
     };
-    axios
-      .request(options)
-      .then((response) => {
-        setTranslatedText(response.data?.google?.text);
-        setIsSuccess(response.data?.google?.status === "success");
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsSuccess(false);
-      });
+    try {
+      const response = await axios.request(options);
+      setTranslatedText(response.data?.google?.text);
+      setIsSuccess(response.data?.google?.status === "success");
+    } catch (error) {
+      console.error(error);
+      setIsSuccess(false);
+    }
   };
 
   useEffect(() => {
     if (isTranslated) {
       setIsSuccess(false);
-      translateText();
-    } else {
-      setTranslatedText("");
+      if (translatedText) {
+        setIsSuccess(true);
+      } else {
+        translateText();
+      }
     }
-  }, [isTranslated, originalText]);
+  }, [isTranslated, translatedText]);
 
   return (
     <div className={`box ${isTranslated && isSuccess ? "box_rtl" : ""}`}>
-      {isTranslated ? (isSuccess ? translatedText : originalText.current) : originalText.current}
+      <p>{isTranslated ? (isSuccess ? translatedText : originalText.current) : originalText.current}</p>
       <div className="translate_btn" onClick={() => setIsTranslated((prev) => !prev)}>
         {isTranslated ? (
           !isSuccess ? (

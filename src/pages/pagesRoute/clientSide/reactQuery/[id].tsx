@@ -1,5 +1,7 @@
 import BreadCrump from "@/components/BreadCrump";
 import ComingSoon from "@/components/ComingSoon";
+import Layout from "@/components/Layout";
+import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import React from "react";
 
 const Details = () => {
@@ -8,10 +10,5 @@ const Details = () => {
 
 export default Details;
 Details.getLayout = function getLayout(page: any) {
-  return (
-    <div>
-      <BreadCrump />
-      <main className="container mx-auto my-10">{page}</main>
-    </div>
-  );
+  return <UseEffectLayout>{page}</UseEffectLayout>;
 };
