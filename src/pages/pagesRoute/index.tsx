@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function pagesRoute() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center gap-40">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <BreadCrump />
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
@@ -25,7 +25,7 @@ export default function pagesRoute() {
         <h2 className="text-2xl">Data Fetching</h2>
       </div>
 
-      <div className="mb-32 flex justify-evenly gap-4  lg:w-full lg:mb-0  lg:text-left">
+      <div className="mb-32 flex justify-evenly gap-4  lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <BoxTranslate href="/pagesRoute/clientSide" title="client Side">
           Client-side data fetching is useful when your page doesn't require SEO indexing, when you don't need to pre-render your data, or when the content of
           your pages needs to update frequently. Unlike the server-side rendering APIs, you can use client-side data fetching at the component level.

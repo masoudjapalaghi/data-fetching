@@ -56,11 +56,12 @@ body {
   width: max-content;
 }
 .box {
-  max-width: fit-content;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: fit-content;
+  min-width: 220px;
   flex: 1;
 }
 .box_link:hover {
@@ -78,6 +79,7 @@ body {
 
 .box_rtl {
   direction: rtl;
+  text-align: right;
 }
 ::-webkit-scrollbar {
   width: 12px;

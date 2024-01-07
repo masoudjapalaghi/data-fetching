@@ -5,7 +5,7 @@ import Link from "next/link";
 const Layout = ({ children, navItem }: { children: ReactNode; navItem?: { href: string; label: string }[] }) => {
   return (
     <div>
-      <header className="header">
+      <header className={`header ${navItem ? "" : "!border-b-0"}`}>
         {navItem?.map((item, index) => (
           <Link key={index} href={item.href}>
             {item.label}
@@ -13,7 +13,7 @@ const Layout = ({ children, navItem }: { children: ReactNode; navItem?: { href: 
         ))}
       </header>
       <BreadCrump />
-      <main className="container mx-auto my-10">{children}</main>
+      <main className="container mx-auto  my-10 p-4">{children}</main>
     </div>
   );
 };
