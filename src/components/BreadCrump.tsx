@@ -6,7 +6,7 @@ const BreadCrump = () => {
   const router = useRouter();
   const pathSegments = router.asPath.split("/").filter(Boolean);
   return (
-    <div className="box m-4">
+    <div className="wrapper_breadCrump m-4">
       {/* Breadcrumb navigation */}
       {pathSegments.map((segment, index) => (
         <React.Fragment key={index}>

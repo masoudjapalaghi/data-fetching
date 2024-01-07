@@ -20,11 +20,7 @@ const Tabs: FC<TabProps> = ({ tabs }) => {
     <div>
       <div className="flex gap-5">
         {tabs.map((tab, index) => (
-          <button
-            key={index}
-            onClick={() => handleTabClick(index)}
-            className={activeTab === index ? "active_tab" : ""}
-          >
+          <button key={index} onClick={() => handleTabClick(index)} className={activeTab === index ? " tab-basic active_tab" : "tab"}>
             {tab.label}
           </button>
         ))}

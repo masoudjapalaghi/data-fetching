@@ -39,28 +39,41 @@ body {
   font-weight: bold;
   min-width: 80px;
   text-align: center;
-  box-shadow: var(--box-shadow)
+  box-shadow: var(--box-shadow);
 }
 .header a:hover {
   background-color: aquamarine;
   color: #1f2937;
 }
 .box,
-.active_tab {
+.tab-basic,
+.wrapper_breadCrump {
   box-shadow: var(--box-shadow);
   padding: 10px;
   background-color: var(--color-bg-light);
   border-radius: 12px;
   color: #fff;
+  width: max-content;
+}
+.box {
+  max-width: fit-content;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+.box_link:hover {
+  transform: scale(1.05);
 }
 .box p {
   opacity: 0.5;
 }
-
 .translate_btn {
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .box_rtl {
@@ -92,8 +105,7 @@ body {
   margin: 10px 0;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: var(--box-shadow)
-
+  box-shadow: var(--box-shadow);
 }
 
 .swiper {

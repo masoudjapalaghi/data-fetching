@@ -1,7 +1,6 @@
+import BoxTranslate from "@/components/BoxTranslate";
 import BreadCrump from "@/components/BreadCrump";
-import LinkCard from "@/components/LinkCard";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function pagesRoute() {
   return (
@@ -15,15 +14,7 @@ export default function pagesRoute() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
+            By <Image src="/vercel.svg" alt="Vercel Logo" className="dark:invert" width={100} height={24} priority />
           </a>
         </div>
       </div>
@@ -34,27 +25,20 @@ export default function pagesRoute() {
         <h2 className="text-2xl">Data Fetching</h2>
       </div>
 
-      <div className="mb-32 flex justify-evenly  lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <LinkCard
-          href="/pagesRoute/clientSide"
-          title="client Side"
-          description="Client-side data fetching is useful when your page doesn't require SEO indexing, when you don't need to pre-render your data, or when the content of your pages needs to update frequently. Unlike the server-side rendering APIs, you can use client-side data fetching at the component level."
-        />
-        <LinkCard
-          href="/pagesRoute/getServerSideProps"
-          title="getServerSideProps"
-          description="Function that can be used to fetch data and render the contents of a page at request time ."
-        />
-        <LinkCard
-          href="/pagesRoute/getStaticProps"
-          title="getStaticProps"
-          description="Next.js preempts this page at build time using the getStaticProps function."
-        />
-        <LinkCard
-          href="/pagesRoute/dynamicRoutes"
-          title="dynamic Routes"
-          description="For each of the before sections, we have different ways of data-fetching for dynamic Routes, which we will mention in this section."
-        />
+      <div className="mb-32 flex justify-evenly gap-4  lg:w-full lg:mb-0  lg:text-left">
+        <BoxTranslate href="/pagesRoute/clientSide" title="client Side">
+          Client-side data fetching is useful when your page doesn't require SEO indexing, when you don't need to pre-render your data, or when the content of
+          your pages needs to update frequently. Unlike the server-side rendering APIs, you can use client-side data fetching at the component level.
+        </BoxTranslate>
+        <BoxTranslate href="/pagesRoute/getServerSideProps" title="getServerSideProps">
+          Function that can be used to fetch data and render the contents of a page at request time .
+        </BoxTranslate>
+        <BoxTranslate href="/pagesRoute/getStaticProps" title="getStaticProps">
+          Next.js preempts this page at build time using the getStaticProps function.
+        </BoxTranslate>
+        <BoxTranslate href="/pagesRoute/dynamicRoutes" title="dynamic Routes">
+          For each of the before sections, we have different ways of data-fetching for dynamic Routes, which we will mention in this section.
+        </BoxTranslate>
       </div>
     </main>
   );

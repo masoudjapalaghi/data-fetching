@@ -1,6 +1,4 @@
-import BreadCrump from "@/components/BreadCrump";
 import ComingSoon from "@/components/ComingSoon";
-import Layout from "@/components/Layout";
 import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import React from "react";
 

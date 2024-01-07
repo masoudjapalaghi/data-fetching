@@ -1,6 +1,4 @@
 import BoxTranslate from "@/components/BoxTranslate";
-import BreadCrump from "@/components/BreadCrump";
-import Layout from "@/components/Layout";
 import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import Slider from "@/components/Slider";
 import Link from "next/link";

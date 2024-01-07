@@ -1,6 +1,4 @@
 import BoxCode from "@/components/BoxCode";
-import BreadCrump from "@/components/BreadCrump";
-import Layout from "@/components/Layout";
 import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
