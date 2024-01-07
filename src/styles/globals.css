@@ -27,11 +27,8 @@ body {
 .box,
 .active_tab {
   /* 1. inner glow - for dark mode 👇 */
-  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1),
-    /* 2. shadow ring 👇 */ 0 0 0 1px hsla(230, 13%, 9%, 0.075),
-    /* 3. multiple soft shadows 👇 */ 0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
-    0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
-    0 3.5px 6px hsla(230, 13%, 9%, 0.09);
+  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1), /* 2. shadow ring 👇 */ 0 0 0 1px hsla(230, 13%, 9%, 0.075),
+    /* 3. multiple soft shadows 👇 */ 0 0.3px 0.4px hsla(230, 13%, 9%, 0.02), 0 0.9px 1.5px hsla(230, 13%, 9%, 0.045), 0 3.5px 6px hsla(230, 13%, 9%, 0.09);
   padding: 10px;
   background-color: var(--color-bg-light);
   border-radius: 12px;
@@ -39,6 +36,15 @@ body {
   opacity: 0.5;
 }
 
+.translate_btn {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.box_rtl {
+  direction: rtl;
+}
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -52,11 +58,7 @@ body {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background: linear-gradient(
-    rgb(134, 239, 172),
-    rgb(59, 130, 246),
-    rgb(147, 51, 234)
-  );
+  background: linear-gradient(rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
 }
 .active_link,
 .active_tab {
@@ -69,9 +71,69 @@ body {
   margin: 10px 0;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1),
-    /* 2. shadow ring 👇 */ 0 0 0 1px hsla(230, 13%, 9%, 0.075),
-    /* 3. multiple soft shadows 👇 */ 0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
-    0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
-    0 3.5px 6px hsla(230, 13%, 9%, 0.09);
+  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1), /* 2. shadow ring 👇 */ 0 0 0 1px hsla(230, 13%, 9%, 0.075),
+    /* 3. multiple soft shadows 👇 */ 0 0.3px 0.4px hsla(230, 13%, 9%, 0.02), 0 0.9px 1.5px hsla(230, 13%, 9%, 0.045), 0 3.5px 6px hsla(230, 13%, 9%, 0.09);
 }
+
+.swiper {
+  width: 100%;
+  height: 800px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.swiper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1200px) {
+  .swiper {
+    height: 400px;
+  }
+}
+.loader_fullscreen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  background: aquamarine;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) scale(0.2);
+    border-radius: 10%;
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+    border-radius: 50%;
+  }
+  100% {
+    transform: rotate(360deg) scale(0.2);
+    border-radius: 10%;
+  }
+}
+  

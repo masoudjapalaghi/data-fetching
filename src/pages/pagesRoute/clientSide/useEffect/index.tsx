@@ -1,4 +1,4 @@
-import BlogCode from "@/components/BlogCode";
+import BoxCode from "@/components/BoxCode";
 import BreadCrump from "@/components/BreadCrump";
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
@@ -11,7 +11,7 @@ const UseEffectComponent = () => {
     { label: "Components", content: <FetchByUsEffect /> },
     {
       label: "Code",
-      content: <BlogCode syntax="jsx"  >{codeString}</BlogCode>,
+      content: <BoxCode syntax="jsx">{codeString}</BoxCode>,
     },
   ];
 

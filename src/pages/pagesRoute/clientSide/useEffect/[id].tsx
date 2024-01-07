@@ -1,4 +1,4 @@
-import BlogCode from "@/components/BlogCode";
+import BoxCode from "@/components/BoxCode";
 import BreadCrump from "@/components/BreadCrump";
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
@@ -9,7 +9,7 @@ const DetailsPage = () => {
   const tabsData = [
     {
       label: "Code",
-      content: <BlogCode syntax="jsx"  >{codeString}</BlogCode>,
+      content: <BoxCode syntax="jsx"  >{codeString}</BoxCode>,
     },
     { label: "Components", content: <FetchByUsEffect /> },
   ];

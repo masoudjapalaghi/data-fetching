@@ -1,4 +1,6 @@
+import BoxTranslate from "@/components/BoxTranslate";
 import BreadCrump from "@/components/BreadCrump";
+import Slider from "@/components/Slider";
 import Link from "next/link";
 import React from "react";
 
@@ -8,21 +10,16 @@ const ClientSide = () => {
       <main>
         <div className="flex flex-col gap-4">
           <h2 className="text-lg font-bold">client Side :</h2>
-          <div className="box">
-            If done at the page level, the data is fetched at runtime, and the
-            content of the page is updated as the data changes. When used at the
-            component level, the data is fetched at the time of the component
-            mount, and the content of the component is updated as the data
-            changes.
-          </div>
-          <div className="box">
-            Its important to note that using client-side data fetching can
-            affect the performance of your application and the load speed of
-            your pages. This is because the data fetching is done at the time of
-            the component or pages mount, and the data is not cached.
-            Client-side data fetching with useEffect
-          </div>
+          <BoxTranslate>
+            If done at the page level, the data is fetched at runtime, and the content of the page is updated as the data changes. When used at the component
+            level, the data is fetched at the time of the component mount, and the content of the component is updated as the data changes.
+          </BoxTranslate>
+          <BoxTranslate>
+            Its important to note that using client-side data fetching can affect the performance of your application and the load speed of your pages. This is
+            because the data fetching is done at the time of the component or pages mount, and the data is not cached. Client-side data fetching with useEffect
+          </BoxTranslate>
         </div>
+        <Slider list={[<img src="/img/client-side-rendering.png" alt="csr" />, <img src="/img/csr.jpeg" alt="csr" />]} />
       </main>
     </div>
   );
