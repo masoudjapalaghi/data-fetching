@@ -60,7 +60,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: fit-content;
+  width: 100%;
   min-width: 220px;
   flex: 1;
 }

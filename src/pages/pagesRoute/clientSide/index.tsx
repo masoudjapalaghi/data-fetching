@@ -1,7 +1,6 @@
 import BoxTranslate from "@/components/BoxTranslate";
 import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import Slider from "@/components/Slider";
-import Link from "next/link";
 import React from "react";
 
 const ClientSide = () => {
