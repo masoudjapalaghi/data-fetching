@@ -1,5 +1,5 @@
 import BoxTranslate from "@/components/BoxTranslate";
-import UseEffectLayout from "@/components/Layout/useEffectLayout";
+import GetServerSidePropsLayout from "@/components/Layout/GetServerSidePropsLayout";
 import Slider from "@/components/Slider";
 import React from "react";
 
@@ -24,5 +24,5 @@ const GetServerSidePropsComponents = () => {
 export default GetServerSidePropsComponents;
 
 GetServerSidePropsComponents.getLayout = function getLayout(page: any) {
-  return <UseEffectLayout>{page}</UseEffectLayout>;
+  return <GetServerSidePropsLayout>{page}</GetServerSidePropsLayout>;
 };
