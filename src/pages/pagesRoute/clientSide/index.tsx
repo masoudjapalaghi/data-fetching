@@ -19,7 +19,7 @@ const ClientSide = () => {
             because the data fetching is done at the time of the component or pages mount, and the data is not cached. Client-side data fetching with useEffect
           </BoxTranslate>
         </div>
-        <Slider list={[<img src="/img/client-side-rendering.png" alt="csr" />, <img src="/img/csr.jpeg" alt="csr" />]} />
+        <Slider list={[<img src="/img/client-side-rendering.png" alt="csr" key={"client-side-rendering"} />, <img src="/img/csr.jpeg" alt="csr" key={"csr"} />]} />
       </main>
     </div>
   );
