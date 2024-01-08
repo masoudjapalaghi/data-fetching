@@ -1,14 +1,38 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import MockData from "../../../../public/mock/list.json";
+import fs from "fs/promises";
+import path from "path";
+const filePath = path.join(process.cwd(), "public", "mock", "list.json");
 
-type ResponseData = {
-  message: string;
-} | typeof MockData.data[0];
+// const filePath = path.resolve("../../../../public/mock/list.json"); // مسیر فایل مورد نظر خود را تنظیم کنید
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
-) {
+type ResponseData =
+  | {
+      success: boolean;
+      message?:string
+    }
+  | (typeof MockData.data)[0];
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
+  if (req.method === "PUT") {
+    try {
+      const currentContent = await fs.readFile(`${filePath}`);
+      const parsedData = JSON.parse(currentContent);
+      const newName = req.body.title;
+      console.log(req.body.title)
+      const updatedData = parsedData.data.map((item) => (item.id === parseInt(productId) ? { ...item, title: newName } : item));
+      const newContent = JSON.stringify({ data: updatedData }, null, 2);
+      await fs.writeFile(filePath, newContent, "utf-8");
+
+      res.status(200).json({ success: true });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false });
+    }
+  } else {
+    res.status(405).json({ success: false });
+  }
+
   const productId = req.query.id;
   // Ensure productId is a valid number before attempting to find the item
   if (!productId || isNaN(Number(productId))) {

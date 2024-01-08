@@ -4,11 +4,35 @@ import GetServerSidePropsLayout from "@/components/Layout/GetServerSidePropsLayo
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
 import config from "@/helpers/config";
-
 import type { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 
 const GetListByCaching = ({ data }: { data: ProductCardType[] }) => {
   const tabsData = [
+    {
+      label: "Components",
+      content: (
+        <div className="flex flex-wrap gap-4 ">
+          {data.map((item, index) => (
+            <ProductCard
+              key={index}
+              data={item}
+              handleChangeName={(id) => {
+                console.log(id);
+                fetch("/api/list/" + id, {
+                  headers: {
+                    "Content-Type": "application/json",
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                  },
+                  method: "put",
+                  body: JSON.stringify({title:Math.random()}),
+                });
+              }}
+            />
+          ))}
+        </div>
+      ),
+    },
     {
       label: "Concept",
       content: (
@@ -16,19 +40,7 @@ const GetListByCaching = ({ data }: { data: ProductCardType[] }) => {
           <BoxTranslate>
             You can use caching headers (Cache-Control) inside getServerSideProps to cache dynamic responses. For example, using stale-while-revalidate.
           </BoxTranslate>
-          <BoxCode syntax="js">
-              context.res.setHeader("Cache-Control", "public, s-maxage=10, stale-while-revalidate=59")
-          </BoxCode>
-        </div>
-      ),
-    },
-    {
-      label: "Components",
-      content: (
-        <div className="flex flex-wrap gap-4 ">
-          {data.map((item, index) => (
-            <ProductCard key={index} data={item} />
-          ))}
+          <BoxCode syntax="js">context.res.setHeader("Cache-Control", "public, s-maxage=10, stale-while-revalidate=59")</BoxCode>
         </div>
       ),
     },

@@ -3,19 +3,20 @@
     {
       "id": 1,
       "imageSrc": "/img/1.jpg",
-      "title": "",
-      "description": ""
+      "description": "",
+      "name": "New Nameسسسسسسسسسسسسسسسسسسسسسسس",
+      "title": 0.6643897769256921
     },
     {
       "id": 2,
       "imageSrc": "/img/2.jpg",
-      "title": "",
+      "title": "newName",
       "description": ""
     },
     {
       "id": 3,
       "imageSrc": "/img/3.png",
-      "title": "",
+      "title": "newName",
       "description": ""
     }
   ]
