@@ -24,7 +24,7 @@ export default FetchDetails;
 export const getServerSideProps = (async (context) => {
   // Fetch data from external API
   const id = context.params?.id;
-  const res = await fetch(config.apiUrl + "/api/list/" + id);
+  const res = await fetch(config.apiUrlServer + "lists/" + id);
   const data = await res.json();
   // Pass data to the page via props
   return { props: { data } };
@@ -44,7 +44,7 @@ const FetchDetails = ({ data }: { data: ProductCardType }) => {
 export const getServerSideProps = (async (context) => {
    // Fetch data from external API
    const id = context.params?.id;
-   const res = await fetch(config.apiUrl + "/api/list/" + id);
+   const res = await fetch(config.apiUrlServer + "lists/" + id);
    const data = await res.json();
    // Pass data to the page via props
    return { props: { data } };

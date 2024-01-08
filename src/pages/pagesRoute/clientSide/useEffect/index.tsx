@@ -2,6 +2,7 @@ import BoxCode from "@/components/BoxCode";
 import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
+import config from "@/helpers/config";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -25,10 +26,10 @@ const FetchByUsEffect = () => {
   const [isLoading, setLoading] = useState(true);
   const { pathname } = useRouter();
   useEffect(() => {
-    fetch("/api/list")
+    fetch(config.apiUrlClient + "lists")
       .then((res) => res.json())
       .then((data) => {
-        setData(data.data);
+        setData(data);
         setLoading(false);
       });
   }, []);
@@ -51,12 +52,12 @@ const codeString = `const FetchByUsEffect = () => {
   const [isLoading, setLoading] = useState(true);
   const { pathname } = useRouter();
   useEffect(() => {
-    fetch("/api/list")
+    fetch(config.apiUrlClient + "lists")
       .then((res) => res.json())
       .then((data) => {
-        setData(data.data);
-        setLoading(false);
-      });
+          setData(data);
+          setLoading(false);
+        });
   }, []);
 
   if (isLoading) return <p>Loading...</p>;

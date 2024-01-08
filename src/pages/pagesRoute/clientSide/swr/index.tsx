@@ -2,6 +2,7 @@ import BoxCode from "@/components/BoxCode";
 import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
+import config from "@/helpers/config";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
@@ -27,14 +28,14 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 
 function FetchBySwr() {
   const { pathname } = useRouter();
-  const { data, error } = useSWR<{ data: ProductCardType[] }>("/api/list", fetcher);
+  const { data, error } = useSWR< ProductCardType[] >(config.apiUrlClient +"lists", fetcher);
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
 
   return (
     <div className="flex flex-wrap gap-4 ">
-      {data?.data.map((item, index) => (
+      {data?.map((item, index) => (
         <Link href={pathname + "/" + item.id} key={index}>
           <ProductCard data={item} />
         </Link>
@@ -44,6 +45,7 @@ function FetchBySwr() {
 }
 const codeString = `
 import useSWR from 'swr'
+import config from "@/helpers/config";
 
 const fetcher = async (...args: Parameters<typeof fetch>) => {
   const res = await fetch(...args);
@@ -52,8 +54,8 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 
 function FetchBySwr() {
   const { pathname } = useRouter();
-  const { data, error } = useSWR<{ data: ProductCardType[] }>(
-    "/api/list",
+  const { data, error } = useSWR< ProductCardType[] >(
+    config.apiUrlClient +"lists",
     fetcher
   );
 
@@ -62,7 +64,7 @@ function FetchBySwr() {
 
   return (
     <div className="flex flex-wrap gap-4 ">
-      {data?.data.map((item, index) => (
+      {data?.map((item, index) => (
         <Link href={pathname + "/" + item.id} key={index}>
           <ProductCard data={item} />
         </Link>

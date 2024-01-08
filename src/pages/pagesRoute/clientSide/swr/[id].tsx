@@ -2,6 +2,7 @@ import BoxCode from "@/components/BoxCode";
 import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
+import config from "@/helpers/config";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
@@ -26,7 +27,7 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 
 function FetchBySwr() {
   const { query } = useRouter();
-  const { data, error } = useSWR<ProductCardType>("/api/list/" + query.id, fetcher);
+  const { data, error } = useSWR<ProductCardType>(config.apiUrlClient + "lists/" + query.id, fetcher);
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
@@ -39,6 +40,7 @@ function FetchBySwr() {
 }
 const codeString = `
 import useSWR from 'swr'
+import config from "@/helpers/config";
 
 const fetcher = async (...args: Parameters<typeof fetch>) => {
   const res = await fetch(...args);
@@ -48,7 +50,7 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 function FetchBySwr() {
   const { query } = useRouter();
   const { data, error } = useSWR<ProductCardType>(
-    "/api/list/" + query.id,
+    config.apiUrlClient + "lists/" + query.id
     fetcher
   );
 

@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 
 const GetList = ({ data }: { data: ProductCardType[] }) => {
   const { pathname } = useRouter();
-
   const tabsData = [
     {
       label: "Components",
@@ -35,10 +34,10 @@ export default GetList;
 
 export const getServerSideProps = (async () => {
   // Fetch data from external API
-  const res = await fetch(config.apiUrl + "/api/list");
+  const res = await fetch(config.apiUrlServer + "/lists");
   const data = await res.json();
   // Pass data to the page via props
-  return { props: { data: data.data } };
+  return { props: { data: data } };
 }) satisfies GetServerSideProps<{ data: ProductCardType[] }>;
 
 GetList.getLayout = function getLayout(page: any) {
@@ -64,9 +63,9 @@ return(
  
  export const getServerSideProps = (async () => {
   // Fetch data from external API
-  const res = await fetch(config.apiUrl + "/api/list");
+  const res = await fetch(config.apiUrlServer + "/lists");
   const data = await res.json();
   // Pass data to the page via props
-  return { props: { data: data.data } };
+  return { props: { data: data } };
 }) satisfies GetServerSideProps<{ data: ProductCardType[] }>;
  `;

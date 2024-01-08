@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const ProductCard = ({ data, href, isDetails,handleChangeName }: { data: ProductCardType; href?: string; isDetails?: boolean,handleChangeName?:(id:string)=>void }) => {
+const ProductCard = ({ data, href, isDetails,handleChangePrice }: { data: ProductCardType; href?: string; isDetails?: boolean,handleChangePrice?:(id:string)=>void }) => {
   const AsLink = href ? Link : "div";
   return (
     <div className={`${isDetails ? "" : "max-w-md"} w-full bg-gray-900 shadow-lg rounded-xl p-6`}>
@@ -41,7 +41,7 @@ const ProductCard = ({ data, href, isDetails,handleChangeName }: { data: Product
                 <div className="flex items-center bg-green-400 text-white text-xs px-2 py-1 ml-3 rounded-lg">INSTOCK</div>
               </div>
             </div>
-            <div className="text-xl text-white font-semibold mt-1">$240.00</div>
+            <div className="text-xl text-white font-semibold mt-1">${data.price}.00</div>
             <div className="lg:flex  py-4  text-sm text-gray-600">
               <div className="flex-1 inline-flex items-center  mb-3">
                 <div className="w-full flex-none text-sm flex items-center text-gray-600">
@@ -81,7 +81,7 @@ const ProductCard = ({ data, href, isDetails,handleChangeName }: { data: Product
             </div>
             <div className="flex space-x-2 text-sm font-medium justify-start">
               <button className="transition ease-in duration-300 inline-flex items-center text-sm font-medium mb-2 md:mb-0 bg-purple-500 px-5 py-2 hover:shadow-lg tracking-wider text-white rounded-full hover:bg-purple-600 ">
-                <span onClick={()=>handleChangeName?.(data.id)}>change Name</span>
+                <span onClick={()=>handleChangePrice?.(data.id)}>change Price</span>
               </button>
               <button className="transition ease-in duration-300 bg-gray-700 hover:bg-gray-800 border hover:border-gray-500 border-gray-700 hover:text-white  hover:shadow-lg text-gray-400 rounded-full w-9 h-9 text-center p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

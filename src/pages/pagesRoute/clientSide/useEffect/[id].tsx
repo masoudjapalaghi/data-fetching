@@ -2,6 +2,7 @@ import BoxCode from "@/components/BoxCode";
 import UseEffectLayout from "@/components/Layout/useEffectLayout";
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
+import config from "@/helpers/config";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -24,7 +25,7 @@ const FetchByUsEffect = () => {
   const [isLoading, setLoading] = useState(true);
   const { query } = useRouter();
   useEffect(() => {
-    fetch("/api/list/" + query.id)
+    fetch(config.apiUrlClient +"lists/" + query.id)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -45,8 +46,8 @@ const codeString = `const FetchByUsEffect = () => {
     const [isLoading, setLoading] = useState(true);
     const { query } = useRouter();
     useEffect(() => {
-      fetch("/api/list/" + query.id)
-        .then((res) => res.json())
+      fetch(config.apiUrlClient +"lists/" + query.id)
+      .then((res) => res.json())
         .then((data) => {
           setData(data);
           setLoading(false);
