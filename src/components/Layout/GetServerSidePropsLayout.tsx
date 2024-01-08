@@ -7,6 +7,7 @@ const GetServerSidePropsLayout = ({  children }: {  children: ReactNode }) => {
       navItem={[
         { href: "/pagesRoute/getServerSideProps/fetch", label: "fetch" },
         { href: "/pagesRoute/getServerSideProps/caching", label: "caching" },
+        { href: "/pagesRoute/getServerSideProps/caching/caching-sample2", label: "caching-sample2" },
       ]}
     >
       {children}
