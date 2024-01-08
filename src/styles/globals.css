@@ -69,6 +69,8 @@ body {
 }
 .box p {
   opacity: 0.5;
+  white-space: pre-line;
+  line-height: 1.5rem;
 }
 .translate_btn {
   display: flex;
@@ -77,7 +79,8 @@ body {
   margin-top: 10px;
 }
 
-.box_rtl {
+.box_rtl p,
+.box_rtl .translate_btn {
   direction: rtl;
   text-align: right;
 }
@@ -170,4 +173,21 @@ body {
     transform: rotate(360deg) scale(0.2);
     border-radius: 10%;
   }
+}
+
+
+.box_code {
+  position: relative;
+
+}
+.box-code_copy {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  opacity: 0;
+  transition: all .5s ease;
+
+}
+.box_code:hover .box-code_copy {
+  opacity: 1;
 }

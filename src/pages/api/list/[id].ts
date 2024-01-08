@@ -10,7 +10,6 @@ export default function handler(
   res: NextApiResponse<ResponseData>
 ) {
   const productId = req.query.id;
-
   // Ensure productId is a valid number before attempting to find the item
   if (!productId || isNaN(Number(productId))) {
     res.status(400).json({ message: "Invalid productId" });
