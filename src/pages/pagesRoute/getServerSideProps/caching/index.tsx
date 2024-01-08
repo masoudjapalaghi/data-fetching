@@ -17,7 +17,7 @@ const GetListByCaching = ({ data }: { data: ProductCardType[] }) => {
             You can use caching headers (Cache-Control) inside getServerSideProps to cache dynamic responses. For example, using stale-while-revalidate.
           </BoxTranslate>
           <BoxCode syntax="js">
-              context.res.setHeader("Cache-Control", "public, s-maxage=10, stale-while-revalidate=59");
+              context.res.setHeader("Cache-Control", "public, s-maxage=10, stale-while-revalidate=59")
           </BoxCode>
         </div>
       ),
