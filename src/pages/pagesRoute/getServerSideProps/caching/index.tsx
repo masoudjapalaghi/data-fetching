@@ -8,7 +8,6 @@ import config from "@/helpers/config";
 import type { GetServerSideProps } from "next";
 
 const GetListByCaching = ({ data }: { data: ProductCardType[] }) => {
-   
   const handleChangePrice = (id: String) => {
     fetch(config.apiUrlClient + "lists/" + id, {
       headers: {
@@ -18,22 +17,8 @@ const GetListByCaching = ({ data }: { data: ProductCardType[] }) => {
       body: JSON.stringify({ price: generateRandomPrice() }),
     });
   };
-  
+
   const tabsData = [
-    {
-      label: "Components",
-      content: (
-        <div className="flex flex-wrap gap-4 ">
-          {data.map((item, index) => (
-            <ProductCard
-              key={index}
-              data={item}
-              handleChangePrice={handleChangePrice}
-            />
-          ))}
-        </div>
-      ),
-    },
     {
       label: "Concept",
       content: (
@@ -57,6 +42,20 @@ const GetListByCaching = ({ data }: { data: ProductCardType[] }) => {
              with a fresh value. If you refresh the page, you will see the new value.
             `}
           </BoxTranslate>
+        </div>
+      ),
+    },
+    {
+      label: "Components",
+      content: (
+        <div className="flex flex-wrap gap-4 ">
+          {data.map((item, index) => (
+            <ProductCard
+              key={index}
+              data={item}
+              handleChangePrice={handleChangePrice}
+            />
+          ))}
         </div>
       ),
     },
