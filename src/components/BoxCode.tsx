@@ -2,7 +2,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import dracula from "react-syntax-highlighter/dist/cjs/styles/prism/dracula";
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-const BoxCode = ({ children, syntax }: { children: string; syntax: string }) => {
+const BoxCode = ({ children, syntax="jsx" }: { children: string; syntax?: string }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {

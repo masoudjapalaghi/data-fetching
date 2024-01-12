@@ -25,13 +25,20 @@ const FetchByUsEffect = () => {
   const [data, setData] = useState<ProductCardType[]>([]);
   const [isLoading, setLoading] = useState(true);
   const { pathname } = useRouter();
-  useEffect(() => {
+
+  const fetchData = () => {
+    setLoading(true);
     fetch(config.apiUrlClient + "lists")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
         setLoading(false);
       });
+  };
+
+
+  useEffect(() => {
+    fetchData()
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
@@ -41,7 +48,7 @@ const FetchByUsEffect = () => {
     <div className="flex flex-wrap gap-4 ">
       {data.map((item, index) => (
         <Link href={pathname + "/" + item.id} key={index}>
-          <ProductCard data={item} />
+          <ProductCard reloadAfterChange data={item}  refetch={fetchData} />
         </Link>
       ))}
     </div>
@@ -51,13 +58,20 @@ const codeString = `const FetchByUsEffect = () => {
   const [data, setData] = useState<ProductCardType[]>([]);
   const [isLoading, setLoading] = useState(true);
   const { pathname } = useRouter();
-  useEffect(() => {
+
+  const fetchData = () => {
+    setLoading(true);
     fetch(config.apiUrlClient + "lists")
       .then((res) => res.json())
       .then((data) => {
-          setData(data);
-          setLoading(false);
-        });
+        setData(data);
+        setLoading(false);
+      });
+  };
+
+
+  useEffect(() => {
+    fetchData()
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
@@ -67,7 +81,7 @@ const codeString = `const FetchByUsEffect = () => {
     <div className="flex flex-wrap gap-4 ">
       {data.map((item, index) => (
         <Link href={pathname + "/" + item.id} key={index}>
-          <ProductCard data={item} />
+          <ProductCard reloadAfterChange data={item} />
         </Link>
       ))}
     </div>

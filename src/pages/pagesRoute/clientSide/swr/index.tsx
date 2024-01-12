@@ -28,7 +28,7 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 
 function FetchBySwr() {
   const { pathname } = useRouter();
-  const { data, error } = useSWR< ProductCardType[] >(config.apiUrlClient +"lists", fetcher);
+  const { data, error,mutate } = useSWR< ProductCardType[] >(config.apiUrlClient +"lists", fetcher);
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
@@ -37,7 +37,7 @@ function FetchBySwr() {
     <div className="flex flex-wrap gap-4 ">
       {data?.map((item, index) => (
         <Link href={pathname + "/" + item.id} key={index}>
-          <ProductCard data={item} />
+          <ProductCard  data={item}  reloadAfterChange refetch={mutate}/>
         </Link>
       ))}
     </div>
@@ -54,7 +54,7 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 
 function FetchBySwr() {
   const { pathname } = useRouter();
-  const { data, error } = useSWR< ProductCardType[] >(
+  const { data, error,mutate } = useSWR< ProductCardType[] >(
     config.apiUrlClient +"lists",
     fetcher
   );
@@ -66,7 +66,7 @@ function FetchBySwr() {
     <div className="flex flex-wrap gap-4 ">
       {data?.map((item, index) => (
         <Link href={pathname + "/" + item.id} key={index}>
-          <ProductCard data={item} />
+          <ProductCard  data={item} reloadAfterChange refetch={mutate} />
         </Link>
       ))}
     </div>

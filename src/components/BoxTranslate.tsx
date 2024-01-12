@@ -1,15 +1,16 @@
-"use client"
+"use client";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import Spinner from "./Spinner";
 import Link from "next/link";
 import { MouseEvent } from "react";
-type Props = { href?: string; title?: string; children: string; sourceLanguage?: string; targetLanguage?: string };
+type Props = { href?: string; title?: string; children: string; sourceLanguage?: string; targetLanguage?: string; size?: number };
 
-const BoxTranslate = ({ children, sourceLanguage, targetLanguage, href, title }: Props) => {
+const BoxTranslate = ({ children, sourceLanguage, targetLanguage, href, title, size }: Props) => {
   const [isTranslated, setIsTranslated] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const originalText = useRef(children);
+  // const originalText = useRef(children);
+  // const [originalText, setOriginalText ] = useState(children)
   const [translatedText, setTranslatedText] = useState("");
 
   const translateText = async () => {
@@ -53,12 +54,17 @@ const BoxTranslate = ({ children, sourceLanguage, targetLanguage, href, title }:
       }
     }
   }, [isTranslated, translatedText]);
+
+  // useEffect(() => {
+  //   setOriginalText(children);
+  // }, [children]);
+
   const Component = href ? Link : "div";
   return (
     <Component href={href ?? ""} className={`box ${href ? "box_link" : ""} ${isTranslated && isSuccess ? "box_rtl" : ""}`}>
       <div>
-        <h3 className="mb-3 text-2xl font-semibold">{title}</h3>
-        <p>{isTranslated ? (isSuccess ? translatedText : originalText.current) : originalText.current}</p>
+        {title && <h3 className="mb-3 text-2xl font-semibold">{title}</h3>}
+        <p style={size ? { fontSize: `${size}px` } : {}}>{isTranslated ? (isSuccess ? translatedText : children) : children}</p>
       </div>
       <div className="translate_btn" onClick={handleTranslate}>
         {isTranslated ? (

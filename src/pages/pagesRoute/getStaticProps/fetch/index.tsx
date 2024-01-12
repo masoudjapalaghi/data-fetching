@@ -1,5 +1,5 @@
 import BoxCode from "@/components/BoxCode";
-import GetServerSidePropsLayout from "@/components/Layout/GetServerSidePropsLayout";
+import GetStaticPropsLayout from "@/components/Layout/GetStaticPropsLayout";
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
 import config from "@/helpers/config";
@@ -15,7 +15,7 @@ const GetList = ({ data }: { data: ProductCardType[] }) => {
       content: (
         <div className="flex flex-wrap gap-4 ">
           {data.map((item, index) => (
-            <ProductCard reloadAfterChange key={index} data={item} href={pathname + "/" + item.id} />
+            <ProductCard key={index} data={item} href={pathname + "/" + item.id} />
           ))}
         </div>
       ),
@@ -31,8 +31,7 @@ const GetList = ({ data }: { data: ProductCardType[] }) => {
 
 export default GetList;
 
-
-export const getServerSideProps = (async () => {
+export const getStaticProps = (async () => {
   // Fetch data from external API
   const res = await fetch(config.apiUrlServer + "/lists");
   const data = await res.json();
@@ -41,7 +40,7 @@ export const getServerSideProps = (async () => {
 }) satisfies GetServerSideProps<{ data: ProductCardType[] }>;
 
 GetList.getLayout = function getLayout(page: any) {
-  return <GetServerSidePropsLayout>{page}</GetServerSidePropsLayout>;
+  return <GetStaticPropsLayout>{page}</GetStaticPropsLayout>;
 };
 const codeString = `
 import { GetServerSideProps } from "next";
@@ -55,13 +54,13 @@ const { pathname } = useRouter();
 return(
         <div className="flex flex-wrap gap-4 ">
         {data.map((item, index) => (
-        <ProductCard reloadAfterChange key={index} data={item} href={pathname + "/" + item.id} />
+        <ProductCard key={index} data={item} href={pathname + "/" + item.id} />
         ))}
         </div>
     )
  }
  
- export const getServerSideProps = (async () => {
+ export const getStaticProps = (async () => {
   // Fetch data from external API
   const res = await fetch(config.apiUrlServer + "/lists");
   const data = await res.json();

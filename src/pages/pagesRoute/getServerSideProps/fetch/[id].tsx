@@ -9,7 +9,7 @@ const FetchDetails = ({ data }: { data: ProductCardType }) => {
   const tabsData = [
     {
       label: "Components",
-      content: <ProductCard data={data} isDetails />,
+      content: <ProductCard reloadAfterChange data={data} isDetails />,
     },
     {
       label: "Code",
@@ -38,7 +38,7 @@ import { GetServerSideProps } from "next";
 import ProductCard from "@/components/ProductCard";
 
 const FetchDetails = ({ data }: { data: ProductCardType }) => {
-    return <ProductCard data={data} isDetails />;
+    return <ProductCard reloadAfterChange data={data} isDetails />;
   };
 
 export const getServerSideProps = (async (context) => {

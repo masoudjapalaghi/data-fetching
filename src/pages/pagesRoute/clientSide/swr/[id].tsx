@@ -27,14 +27,14 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 
 function FetchBySwr() {
   const { query } = useRouter();
-  const { data, error } = useSWR<ProductCardType>(config.apiUrlClient + "lists/" + query.id, fetcher);
+  const { data, error,mutate } = useSWR<ProductCardType>(config.apiUrlClient + "lists/" + query.id, fetcher);
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
 
   return (
     <div className="flex flex-wrap gap-4 ">
-      <ProductCard data={data} isDetails />
+      <ProductCard data={data} reloadAfterChange refetch={mutate} isDetails />
     </div>
   );
 }
@@ -49,7 +49,7 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 
 function FetchBySwr() {
   const { query } = useRouter();
-  const { data, error } = useSWR<ProductCardType>(
+  const { data, error,mutate } = useSWR<ProductCardType>(
     config.apiUrlClient + "lists/" + query.id
     fetcher
   );
@@ -59,7 +59,7 @@ function FetchBySwr() {
 
   return (
     <div className="flex flex-wrap gap-4 ">
-      <ProductCard data={data} isDetails />
+      <ProductCard  data={data} reloadAfterChange refetch={mutate} isDetails />
     </div>
   );
 }`;

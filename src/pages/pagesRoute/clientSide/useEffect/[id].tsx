@@ -24,20 +24,29 @@ const FetchByUsEffect = () => {
   const [data, setData] = useState<ProductCardType>();
   const [isLoading, setLoading] = useState(true);
   const { query } = useRouter();
-  useEffect(() => {
+
+  const fetchData = () => {
+    setLoading(true);
     fetch(config.apiUrlClient +"lists/" + query.id)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
         setLoading(false);
       });
+  };
+
+
+  useEffect(() => {
+    fetchData()
   }, []);
+
+
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>No profile data</p>;
 
   return (
     <div className="flex flex-wrap gap-4 ">
-      <ProductCard data={data} isDetails />
+      <ProductCard  data={data} reloadAfterChange refetch={fetchData}  isDetails />
     </div>
   );
 };
@@ -45,20 +54,27 @@ const codeString = `const FetchByUsEffect = () => {
     const [data, setData] = useState<ProductCardType>();
     const [isLoading, setLoading] = useState(true);
     const { query } = useRouter();
-    useEffect(() => {
-      fetch(config.apiUrlClient +"lists/" + query.id)
+
+    const fetchData = () => {
+    setLoading(true);
+    fetch(config.apiUrlClient +"lists/" + query.id)
       .then((res) => res.json())
-        .then((data) => {
-          setData(data);
-          setLoading(false);
-        });
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      });
+    };
+
+    useEffect(() => {
+      fetchData()
     }, []);
+    
     if (isLoading) return <p>Loading...</p>;
     if (!data) return <p>No profile data</p>;
   
     return (
       <div className="flex flex-wrap gap-4 ">
-        <ProductCard data={data} isDetails />
+        <ProductCard data={data} refetch={fetchData} isDetails />
       </div>
     );
   };`;

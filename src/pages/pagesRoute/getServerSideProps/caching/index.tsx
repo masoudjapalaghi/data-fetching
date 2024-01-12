@@ -3,20 +3,11 @@ import BoxTranslate from "@/components/BoxTranslate";
 import GetServerSidePropsLayout from "@/components/Layout/GetServerSidePropsLayout";
 import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
-import { generateRandomPrice } from "@/helpers/Method";
 import config from "@/helpers/config";
 import type { GetServerSideProps } from "next";
 
 const GetListByCaching = ({ data }: { data: ProductCardType[] }) => {
-  const handleChangePrice = (id: String) => {
-    fetch(config.apiUrlClient + "lists/" + id, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "put",
-      body: JSON.stringify({ price: generateRandomPrice() }),
-    });
-  };
+
 
   const tabsData = [
     {
@@ -51,9 +42,9 @@ const GetListByCaching = ({ data }: { data: ProductCardType[] }) => {
         <div className="flex flex-wrap gap-4 ">
           {data.map((item, index) => (
             <ProductCard
+             reloadAfterChange
               key={index}
               data={item}
-              handleChangePrice={handleChangePrice}
             />
           ))}
         </div>
@@ -107,7 +98,7 @@ const GetList = ({ data }: { data: ProductCardType[] }) => {
   return(
           <div className="flex flex-wrap gap-4 ">
           {data.map((item, index) => (
-          <ProductCard key={index} data={item} handleChangePrice={handleChangePrice}/>
+          <ProductCard reloadAfterChange key={index} data={item} handleChangePrice={handleChangePrice}/>
           ))}
           </div>
       )
