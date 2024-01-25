@@ -2,6 +2,7 @@ import BoxCode from "@/components/BoxCode";
 import BoxTranslate from "@/components/BoxTranslate";
 import GetStaticPropsLayout from "@/components/Layout/GetStaticPropsLayout";
 import ProductCard from "@/components/ProductCard";
+import Slider from "@/components/Slider";
 import Tabs from "@/components/Tabs";
 import config from "@/helpers/config";
 
@@ -41,6 +42,9 @@ const GetList = ({ data }: { data: ProductCardType[] }) => {
             When a request is made to a path that hasn’t been generated, Next.js will server-render the page on the first request. Future requests will serve the static file from the cache. 
           `}
           </BoxTranslate>
+          <Slider
+          list={[<img src="/img/isr.png" alt="csr" key={"client-side-rendering"} />]}
+        />
         </div>
       ),
     },

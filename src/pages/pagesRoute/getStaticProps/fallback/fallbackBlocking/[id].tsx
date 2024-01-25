@@ -82,7 +82,7 @@ FetchDetails.getLayout = function getLayout(page: any) {
   return <GetStaticPropsLayout>{page}</GetStaticPropsLayout>;
 };
 const codeString = `
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import ProductCard from "@/components/ProductCard";
 
 const FetchDetails = ({ data }: { data: ProductCardType }) => {
@@ -105,7 +105,7 @@ const FetchDetails = ({ data }: { data: ProductCardType }) => {
     }));
     return {
       paths, // See the "paths" section below
-      fallback: false, // true or "blocking"
+      fallback: blocking, // true or "blocking"
     };
   }) satisfies GetStaticPaths;
   
