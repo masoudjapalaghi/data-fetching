@@ -13,13 +13,13 @@ const BreadCrump = () => {
           <React.Fragment key={index}>
             {index === 0 && (
               <span key="home">
-                <Link href={`/`} className={router.asPath === "/" ? "active_link" : ""}>
+                <Link prefetch={false} href={`/`} className={router.asPath === "/" ? "active_link" : ""}>
                   home {` / `}
                 </Link>
               </span>
             )}
             <span key={segment}>
-              <Link href={`/${pathSegments.slice(0, index + 1).join("/")}`} className={router.asPath === `/${pathSegments.slice(0, index + 1).join("/")}` ? "active_link" : ""}>
+              <Link prefetch={false} href={`/${pathSegments.slice(0, index + 1).join("/")}`} className={router.asPath === `/${pathSegments.slice(0, index + 1).join("/")}` ? "active_link" : ""}>
                 {segment}
               </Link>
               {index < pathSegments.length - 1 && " / "}
@@ -32,7 +32,7 @@ const BreadCrump = () => {
           Back
         </div>
       ) : (
-        <Link className="cursor-pointer text-teal-200 border-2 border-teal-200 p-2 rounded-md mr-4 transition-all hover:scale-110" href={"/createProduct"}>
+        <Link prefetch={false} className="cursor-pointer text-teal-200 border-2 border-teal-200 p-2 rounded-md mr-4 transition-all hover:scale-110" href={"/createProduct"}>
           CreateProduct
         </Link>
       )}

@@ -13,6 +13,16 @@ const GetList = ({ data }: { data: ProductCardType[] }) => {
   const { pathname } = useRouter();
   const tabsData = [
     {
+      label: "List",
+      content: (
+        <div className="flex flex-wrap gap-4 ">
+          {data.map((item, index) => (
+            <ProductCard key={index} data={item} href={pathname + "/" + item.id} />
+          ))}
+        </div>
+      ),
+    },
+    {
       label: "Concept",
       content: (
         <div className="flex flex-col gap-4">
@@ -42,19 +52,7 @@ const GetList = ({ data }: { data: ProductCardType[] }) => {
             When a request is made to a path that hasn’t been generated, Next.js will server-render the page on the first request. Future requests will serve the static file from the cache. 
           `}
           </BoxTranslate>
-          <Slider
-          list={[<img src="/img/isr.png" alt="csr" key={"client-side-rendering"} />]}
-        />
-        </div>
-      ),
-    },
-    {
-      label: "List",
-      content: (
-        <div className="flex flex-wrap gap-4 ">
-          {data.map((item, index) => (
-            <ProductCard key={index} data={item} href={pathname + "/" + item.id} />
-          ))}
+          <Slider list={[<img src="/img/isr.png" alt="csr" key={"client-side-rendering"} />]} />
         </div>
       ),
     },
@@ -69,7 +67,7 @@ export const getStaticProps = (async () => {
   const res = await fetch(config.apiUrlServer + "/lists");
   const data = await res.json();
   // Pass data to the page via props
-  return { props: { data: data  },revalidate: 61 };
+  return { props: { data: data }, revalidate: 61 };
 }) satisfies GetServerSideProps<{ data: ProductCardType[] }>;
 
 GetList.getLayout = function getLayout(page: any) {

@@ -9,6 +9,10 @@ import { GetStaticPaths, GetStaticProps } from "next";
 const FetchDetails = ({ data }: { data: ProductCardType }) => {
   const tabsData = [
     {
+      label: "Components",
+      content: <ProductCard data={data} isDetails />,
+    },
+    {
       label: "Concept",
       content: (
         <div className="flex flex-col gap-4 ">
@@ -48,10 +52,6 @@ const FetchDetails = ({ data }: { data: ProductCardType }) => {
           </BoxTranslate>
         </div>
       ),
-    },
-    {
-      label: "Components",
-      content: <ProductCard data={data} isDetails />,
     },
     {
       label: "Code",

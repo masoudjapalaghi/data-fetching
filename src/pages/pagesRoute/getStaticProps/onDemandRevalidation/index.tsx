@@ -12,6 +12,16 @@ const GetList = ({ data }: { data: ProductCardType[] }) => {
   const { pathname } = useRouter();
   const tabsData = [
     {
+      label: "List",
+      content: (
+        <div className="flex flex-wrap gap-4 ">
+          {data.map((item, index) => (
+            <ProductCard key={index} data={item} href={pathname + "/" + item.id} />
+          ))}
+        </div>
+      ),
+    },
+    {
       label: "Concept",
       content: (
         <div className="flex flex-col gap-4">
@@ -63,14 +73,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 } `}
           </BoxCode>
-          <BoxTranslate title="Using On-Demand Revalidation">
-              Then we need to call this api to update
-          </BoxTranslate>
-          <BoxCode>
-            {`https://<your-site.com>/api/revalidate?secret=IS_TOKEN_FOR_REVALIDATE`}
-          </BoxCode>
-          <BoxTranslate >
-              {`
+          <BoxTranslate title="Using On-Demand Revalidation">Then we need to call this api to update</BoxTranslate>
+          <BoxCode>{`https://<your-site.com>/api/revalidate?secret=IS_TOKEN_FOR_REVALIDATE`}</BoxCode>
+          <BoxTranslate>
+            {`
                 Then we need to call this api to update
                 
                 Based on the need, we can place it in various places such as:
@@ -82,16 +88,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 ...
               `}
           </BoxTranslate>
-        </div>
-      ),
-    },
-    {
-      label: "List",
-      content: (
-        <div className="flex flex-wrap gap-4 ">
-          {data.map((item, index) => (
-            <ProductCard key={index} data={item} href={pathname + "/" + item.id} />
-          ))}
         </div>
       ),
     },

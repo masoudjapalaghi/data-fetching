@@ -10,7 +10,7 @@ const Layout = ({ children, navItem }: { children: ReactNode; navItem?: { href: 
     <div>
       <header className={`header ${navItem ? "" : "!border-b-0"}`}>
         {navItem?.map((item, index) => (
-          <Link className={router.pathname === item.href ? "active_route" : ""} key={index} href={item.href}>
+          <Link prefetch={false} className={router.pathname === item.href ? "active_route" : ""} key={index} href={item.href}>
             {item.label}
           </Link>
         ))}

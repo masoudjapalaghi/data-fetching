@@ -47,7 +47,7 @@ const FetchByUsEffect = () => {
   return (
     <div className="flex flex-wrap gap-4 ">
       {data.map((item, index) => (
-        <Link href={pathname + "/" + item.id} key={index}>
+        <Link prefetch={false} href={pathname + "/" + item.id} key={index}>
           <ProductCard reloadAfterChange data={item}  refetch={fetchData} />
         </Link>
       ))}
@@ -80,7 +80,7 @@ const codeString = `const FetchByUsEffect = () => {
   return (
     <div className="flex flex-wrap gap-4 ">
       {data.map((item, index) => (
-        <Link href={pathname + "/" + item.id} key={index}>
+        <Link prefetch={false} href={pathname + "/" + item.id} key={index}>
           <ProductCard reloadAfterChange data={item} />
         </Link>
       ))}

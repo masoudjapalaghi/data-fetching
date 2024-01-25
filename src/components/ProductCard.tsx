@@ -101,7 +101,7 @@ const ProductCard = ({
                 </svg>
               </button>
             </div>
-            <AsLink href={href ?? "#"}>
+            <AsLink prefetch={false} href={href ?? "#"}>
               <Image src={data?.imageSrc} width={400} height={228} quality={100} alt="Just a flower" className=" w-full   object-fill  rounded-2xl" />
             </AsLink>
           </div>
