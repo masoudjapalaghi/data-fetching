@@ -1,6 +1,5 @@
 import BoxTranslate from "@/components/BoxTranslate";
-import BreadCrump from "@/components/BreadCrump";
-import Image from "next/image";
+
 
 export default function pagesRoute() {
   return (
@@ -13,8 +12,8 @@ export default function pagesRoute() {
 
       <div className="mb-32 flex justify-evenly gap-4  lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <BoxTranslate href="/pagesRoute/clientSide" title="client Side">
-          Client-side data fetching is useful when your page doesnt require SEO indexing, when you dont need to pre-render your data, or when the content of
-          your pages needs to update frequently. Unlike the server-side rendering APIs, you can use client-side data fetching at the component level.
+          Client-side data fetching is useful when your page doesnt require SEO indexing, when you dont need to pre-render your data, or when the content of your pages needs to update frequently.
+          Unlike the server-side rendering APIs, you can use client-side data fetching at the component level.
         </BoxTranslate>
         <BoxTranslate href="/pagesRoute/getStaticProps" title="getStaticProps">
           Next.js preempts this page at build time using the getStaticProps function.

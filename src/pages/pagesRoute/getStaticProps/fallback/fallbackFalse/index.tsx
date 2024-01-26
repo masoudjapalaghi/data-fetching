@@ -24,7 +24,7 @@ export const getStaticProps = (async () => {
   const res = await fetch(config.apiUrlServer + "/lists");
   const data = await res.json();
   // Pass data to the page via props
-  return { props: { data: data },revalidate: 10 };
+  return { props: { data },revalidate: 10 };
 }) satisfies GetServerSideProps<{ data: ProductCardType[] }>;
 
 GetList.getLayout = function getLayout(page: any) {

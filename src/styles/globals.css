@@ -11,7 +11,28 @@
   --box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1), 0 0 0 1px hsla(230, 13%, 9%, 0.075), 0 0.3px 0.4px hsla(230, 13%, 9%, 0.02), 0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
     0 3.5px 6px hsla(230, 13%, 9%, 0.09);
 }
+@font-face {
+  font-family: "IRANYekan";
+  src: url(/fonts/iranyekanwebregularfanum.eot) format("embedded-opentype"), url(/fonts/iranyekanwebregularfanum.ttf) format("truetype"), url(/fonts/iranyekanwebregularfanum.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: "IRANYekan";
+  src: url(/fonts/iranyekanwebboldfanum.eot) format("embedded-opentype"), url(/fonts/iranyekanwebboldfanum.ttf) format("truetype"), url(/fonts/iranyekanwebboldfanum.woff) format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IRANYekan";
+  src: url(/fonts/IRANYekanBlackFaNum.ttf) format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -71,7 +92,7 @@ body {
 .box p {
   opacity: 0.5;
   white-space: pre-line;
-  line-height: 1.5rem;
+  line-height: 2rem;
 }
 .translate_btn {
   display: flex;
@@ -84,6 +105,8 @@ body {
 .box_rtl .translate_btn {
   direction: rtl;
   text-align: right;
+  font-family: IRANYekan;
+  line-height: 2rem;
 }
 ::-webkit-scrollbar {
   width: 12px;

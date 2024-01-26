@@ -1,3 +1,4 @@
+"use client"
 import { ReactNode } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,7 +20,7 @@ export default function Slider({ list = [] }: { list: ReactNode[] }) {
       
         slidesPerView={1}
         spaceBetween={30}
-        loop={true}
+        loop={false}
         pagination={{
           clickable: true,
         }}
