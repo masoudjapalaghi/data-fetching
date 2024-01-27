@@ -5,8 +5,13 @@ import ProductCard from "@/components/ProductCard";
 import Tabs from "@/components/Tabs";
 import config from "@/helpers/config";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
 
 const FetchDetails = ({ data }: { data: ProductCardType }) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div className="w-dvw h-dvh bg-red-950">Loading...</div>;
+  }
   const tabsData = [
     {
       label: "Components",
