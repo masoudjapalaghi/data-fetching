@@ -11,7 +11,7 @@ const FetchDetails = ({ data }: { data: ProductCardType }) => {
   const handleRevalidate = () => {
     fetch(`/api/revalidate?secret=ja0824u5tr34h234rt9074er`)
       .then((res) => res.json())
-      .then((res) => (res.revalidated ? console.log("yessssssssss"): null));
+      .then((res) => (res.revalidated ? reload() : null));
   };
 
   const tabsData = [
@@ -55,7 +55,7 @@ export const getStaticProps = (async (context) => {
   const id = context.params?.id;
   const res = await fetch(config.apiUrlServer + "lists/" + id);
   const data = await res.json();
-  return { props: { data }};
+  return { props: { data }, revalidate: 3600 };
 }) satisfies GetStaticProps<{ data: ProductCardType }>;
 
 FetchDetails.getLayout = function getLayout(page: any) {
