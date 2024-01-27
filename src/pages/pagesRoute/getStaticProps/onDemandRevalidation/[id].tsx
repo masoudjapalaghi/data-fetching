@@ -31,7 +31,6 @@ const FetchDetails = ({ data }: { data: ProductCardType }) => {
       content: <BoxCode>{codeString}</BoxCode>,
     },
   ];
-
   return <Tabs tabs={tabsData} />;
 };
 export default FetchDetails;
