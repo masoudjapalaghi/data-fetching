@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, FC } from "react";
 
 interface Tab {

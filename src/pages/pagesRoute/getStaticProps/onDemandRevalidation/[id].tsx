@@ -7,9 +7,17 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 
 const FetchDetails = ({ data }: { data: ProductCardType }) => {
-  const { reload } = useRouter();
+  const { reload, asPath } = useRouter();
   const handleRevalidate = () => {
-    fetch(`/api/revalidate?secret=ja0824u5tr34h234rt9074er`)
+    fetch(`/api/revalidate?secret=ja0824u5tr34h234rt9074er`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        url: asPath,
+      }),
+    })
       .then((res) => res.json())
       .then((res) => (res.revalidated ? reload() : null));
   };
@@ -54,7 +62,7 @@ export const getStaticProps = (async (context) => {
   const id = context.params?.id;
   const res = await fetch(config.apiUrlServer + "lists/" + id);
   const data = await res.json();
-  return { props: { data }, revalidate: 3600 };
+  return { props: { data } };
 }) satisfies GetStaticProps<{ data: ProductCardType }>;
 
 FetchDetails.getLayout = function getLayout(page: any) {

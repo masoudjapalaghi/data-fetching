@@ -1,26 +1,28 @@
+"use client";
 import { generateRandomPrice } from "@/helpers/Method";
 import config from "@/helpers/config";
 import Image from "next/image";
 import Link from "next/link";
-import React, { Dispatch, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Spinner from "./Spinner";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 
 const ProductCard = ({
   data,
-  href,
+  productId,
   isDetails,
   reloadAfterChange,
   refetch,
 }: {
   data: ProductCardType;
-  href?: string;
+  productId?: string;
   isDetails?: boolean;
   reloadAfterChange?: boolean;
   refetch?: () => void;
 }) => {
-  const { replace, asPath, push } = useRouter();
-  const AsLink = href ? Link : "div";
+  const { push } = useRouter();
+  const pathname = usePathname();
+  const AsLink = productId ? Link : "div";
   const [status, setStatus] = useState({
     deleteLoading: false,
     updateLoading: false,
@@ -78,7 +80,7 @@ const ProductCard = ({
       if (refetch) {
         refetch?.();
       } else {
-        push(asPath);
+        push(pathname as string);
       }
       setStatus((prev) => ({ ...prev, deleteSuccess: false, updateSuccess: false }));
     }
@@ -101,7 +103,7 @@ const ProductCard = ({
                 </svg>
               </button>
             </div>
-            <AsLink prefetch={false} href={href ?? "#"}>
+            <AsLink prefetch={false} href={`${pathname}/${productId}` ?? "#"}>
               <Image src={data?.imageSrc} width={400} height={228} quality={100} alt="Just a flower" className=" w-full   object-fill  rounded-2xl" />
             </AsLink>
           </div>

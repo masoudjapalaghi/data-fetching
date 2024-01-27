@@ -5,17 +5,15 @@ import Tabs from "@/components/Tabs";
 import config from "@/helpers/config";
 
 import type { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
 
 const GetList = ({ data }: { data: ProductCardType[] }) => {
-  const { pathname } = useRouter();
   const tabsData = [
     {
       label: "Components",
       content: (
         <div className="flex flex-wrap gap-4 ">
           {data.map((item, index) => (
-            <ProductCard reloadAfterChange key={index} data={item} href={pathname + "/" + item.id} />
+            <ProductCard reloadAfterChange key={index} data={item} productId={item.id} />
           ))}
         </div>
       ),
@@ -55,7 +53,7 @@ const { pathname } = useRouter();
 return(
         <div className="flex flex-wrap gap-4 ">
         {data.map((item, index) => (
-        <ProductCard reloadAfterChange key={index} data={item} href={pathname + "/" + item.id} />
+        <ProductCard reloadAfterChange key={index} data={item} productId={item.id} />
         ))}
         </div>
     )

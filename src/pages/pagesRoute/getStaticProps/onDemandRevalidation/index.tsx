@@ -6,17 +6,15 @@ import Tabs from "@/components/Tabs";
 import config from "@/helpers/config";
 
 import type { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
 
 const GetList = ({ data }: { data: ProductCardType[] }) => {
-  const { pathname } = useRouter();
   const tabsData = [
     {
       label: "List",
       content: (
         <div className="flex flex-wrap gap-4 ">
           {data.map((item, index) => (
-            <ProductCard key={index} data={item} href={pathname + "/" + item.id} />
+            <ProductCard key={index} data={item} productId={item.id} />
           ))}
         </div>
       ),
@@ -97,7 +95,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 export default GetList;
 
-export const getStaticProps = (async () => {
+export const getServerSideProps = (async () => {
   // Fetch data from external API
   const res = await fetch(config.apiUrlServer + "/lists");
   const data = await res.json();

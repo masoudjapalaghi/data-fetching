@@ -13,6 +13,14 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
           label: "Revalidating",
           href: "/appRoutes/Revalidating",
         },
+        {
+          href: "/appRoutes/Revalidating/TimeBasedRevalidation",
+          label: "Time-based Revalidation",
+        },
+        {
+          href: "/appRoutes/Revalidating/OnDemandRevalidation",
+          label: "On-demand Revalidation",
+        },
       ]}
     >
       {children}

@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 
 const FetchDetails = ({ data }: { data: ProductCardType }) => {
   const router = useRouter();
+  console.log(router.isFallback);
   if (router.isFallback) {
     return <div className="w-dvw h-dvh bg-red-950">Loading...</div>;
   }
@@ -84,8 +85,16 @@ FetchDetails.getLayout = function getLayout(page: any) {
 const codeString = `
 import { GetServerSideProps } from "next";
 import ProductCard from "@/components/ProductCard";
+import { useRouter } from "next/router";
 
 const FetchDetails = ({ data }: { data: ProductCardType }) => {
+
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div className="w-dvw h-dvh bg-red-950">Loading...</div>;
+  }
+
     return <ProductCard data={data} isDetails />;
   };
 

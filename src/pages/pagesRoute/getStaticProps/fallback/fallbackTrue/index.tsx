@@ -3,15 +3,13 @@ import ProductCard from "@/components/ProductCard";
 import config from "@/helpers/config";
 
 import type { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
 
 const GetList = ({ data }: { data: ProductCardType[] }) => {
-  const { pathname } = useRouter();
 
   return (
     <div className="flex flex-wrap gap-4 ">
       {data.map((item, index) => (
-        <ProductCard key={index} data={item} href={pathname + "/" + item.id} />
+        <ProductCard key={index} data={item} productId={item.id} />
       ))}
     </div>
   );

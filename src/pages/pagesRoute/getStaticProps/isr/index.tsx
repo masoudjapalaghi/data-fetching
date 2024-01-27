@@ -7,17 +7,15 @@ import Tabs from "@/components/Tabs";
 import config from "@/helpers/config";
 
 import type { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
 
 const GetList = ({ data }: { data: ProductCardType[] }) => {
-  const { pathname } = useRouter();
   const tabsData = [
     {
       label: "List",
       content: (
         <div className="flex flex-wrap gap-4 ">
           {data.map((item, index) => (
-            <ProductCard key={index} data={item} href={pathname + "/" + item.id} />
+            <ProductCard key={index} data={item} productId={item.id} />
           ))}
         </div>
       ),

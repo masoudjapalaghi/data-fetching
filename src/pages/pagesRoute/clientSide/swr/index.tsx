@@ -36,7 +36,7 @@ function FetchBySwr() {
   return (
     <div className="flex flex-wrap gap-4 ">
       {data?.map((item, index) => (
-        <Link prefetch={false} href={pathname + "/" + item.id} key={index}>
+        <Link prefetch={false} href={item.id} key={index}>
           <ProductCard  data={item}  reloadAfterChange refetch={mutate}/>
         </Link>
       ))}
