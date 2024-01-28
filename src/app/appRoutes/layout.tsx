@@ -10,6 +10,10 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
           href: "/appRoutes/Caching",
         },
         {
+          label: "generateStaticParams",
+          href: "/appRoutes/generateStaticParams",
+        },
+        {
           label: "Revalidating",
           href: "/appRoutes/Revalidating",
         },

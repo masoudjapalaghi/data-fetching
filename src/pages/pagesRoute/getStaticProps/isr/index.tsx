@@ -26,8 +26,9 @@ const GetList = ({ data }: { data: ProductCardType[] }) => {
         <div className="flex flex-col gap-4">
           <BoxTranslate size={24}>Incremental Static Regeneration</BoxTranslate>
           <BoxTranslate>
-            Next.js allows you to create or update static pages after you’ve built your site. Incremental Static Regeneration (ISR) enables you to use static-generation on a per-page basis, without
-            needing to rebuild the entire site. With ISR, you can retain the benefits of static while scaling to millions of pages.
+            Next.js allows you to create or update static pages after you’ve built your site. Incremental Static Regeneration (ISR) enables you to use
+            static-generation on a per-page basis, without needing to rebuild the entire site. With ISR, you can retain the benefits of static while scaling to
+            millions of pages.
           </BoxTranslate>
           <BoxCode>
             {`return {
@@ -54,6 +55,10 @@ const GetList = ({ data }: { data: ProductCardType[] }) => {
         </div>
       ),
     },
+    {
+      label: "Code",
+      content: <BoxCode>{codeString}</BoxCode>,
+    },
   ];
   return <Tabs tabs={tabsData} />;
 };
@@ -71,3 +76,30 @@ export const getStaticProps = (async () => {
 GetList.getLayout = function getLayout(page: any) {
   return <GetStaticPropsLayout>{page}</GetStaticPropsLayout>;
 };
+
+const codeString = `
+import config from "@/helpers/config";
+import ProductCard from "@/components/ProductCard";
+
+const GetList = ({ data }: { data: ProductCardType[] }) => {
+
+  <div className="flex flex-wrap gap-4 ">
+  {data.map((item, index) => (
+    <ProductCard key={index} data={item} productId={item.id} />
+  ))}
+}
+
+
+
+export const getStaticProps = (async () => {
+  // Fetch data from external API
+  const res = await fetch(config.apiUrlServer + "/lists");
+  const data = await res.json();
+  // Pass data to the page via props
+  return { props: { data: data }, revalidate: 61 };
+}) satisfies GetServerSideProps<{ data: ProductCardType[] }>;
+
+GetList.getLayout = function getLayout(page: any) {
+  return <GetStaticPropsLayout>{page}</GetStaticPropsLayout>;
+};
+  `;

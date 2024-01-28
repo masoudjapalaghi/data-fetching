@@ -44,6 +44,7 @@ const Caching = () => {
           <Slider
             list={[
               <img src="/img/caching-overview.avif" alt="caching-overview.avif" key={"caching-overview"} />,
+              <img src="/img/typeOfCaching.png" alt="typeOfCaching.png" key={"typeOfCaching"} />,
               <img src="/img/router-cache.avif" alt="router-cache.avif" key={"router-cache"} />,
               <img src="/img/full-route-cache.avif" alt="full-route-cache.avif" key={"full-route-cache"} />,
               <img src="/img/request-memoization.avif" alt="request-memoization.avif" key={"request-memoization"} />,
