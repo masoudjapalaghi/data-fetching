@@ -21,6 +21,7 @@ async function getData(id: string): Promise<ProductCardType> {
   return res.json();
 }
 
+
 const Page = async ({ params }: { params: any }) => {
   const data = await getData(params.id);
   const tabsData = [
