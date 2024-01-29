@@ -99,7 +99,7 @@ async function getData(): Promise<ProductCardType[]> {
   }
 
   return res.json();
-
+}
 
   const TimeBasedRevalidation = async () => {
     const data = await getData();

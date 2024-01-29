@@ -109,7 +109,7 @@ const FetchDetails = ({ data }: { data: ProductCardType }) => {
     }));
     return {
       paths, // See the "paths" section below
-      fallback: false, // true or "blocking"
+      fallback: true, // true or "blocking"
     };
   }) satisfies GetStaticPaths;
   
