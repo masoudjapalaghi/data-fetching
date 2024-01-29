@@ -82,11 +82,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import ProductCard from "@/components/ProductCard";
 
 const FetchDetails = ({ data }: { data: ProductCardType }) => {
-  const router = useRouter();
-  
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
+
     return <ProductCard data={data} isDetails />;
   };
 

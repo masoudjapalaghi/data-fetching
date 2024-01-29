@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 
 const FetchDetails = ({ data }: { data: ProductCardType }) => {
   const router = useRouter();
-  console.log(router.isFallback);
   if (router.isFallback) {
     return <div className="w-dvw h-dvh bg-red-950">Loading...</div>;
   }
